@@ -3,16 +3,24 @@ const choices = document.querySelectorAll('.choice'),
     result = document.getElementById('result'),
     restart = document.getElementById('restart'),
     modal = document.querySelector('.modal'),
+    startModal = document.querySelector('.startmodal'),
+    input = document.querySelector('.startmodal input'),
+    startModalBtn = document.getElementById('btn'),
+    finalModal = document.querySelector('.finalmodal'),
+    finalResult = document.getElementById('finalresult'),
+    playAgine = document.querySelector('.play-btn'),
     scoreboard = {
         player: 0,
         computer: 0
     };
-let array = ['rock', 'paper', 'scissors']
+let array = ['rock', 'paper', 'scissors'];
+let inputValue;
 
 choices.forEach(choice => choice.addEventListener('click', play))
 choices.forEach(choice => choice.addEventListener('click', hideModalPro))
 window.addEventListener('DOMContentLoaded', loading)
 restart.addEventListener('click', clearLocalstorage)
+startModalBtn.addEventListener('click', hideStartModal)
 
 modal.addEventListener('click', hideModal)
 
@@ -84,13 +92,13 @@ function loading() {
     if (localStorage.getItem('computer')) {
         scoreboard.computer = JSON.parse(localStorage.getItem('computer'));
         restart.style.display = 'inline-block';
-
     } else {
+        startModal.style.display = 'block';
         scoreboard.computer = 0
     }
-
     score.firstElementChild.innerHTML = `Player: ${scoreboard.player}`;
     score.lastElementChild.innerHTML = `Computer: ${scoreboard.computer}`;
+    // finalModal.style.display = 'none'
 }
 
 //clear LocalStorage
@@ -101,4 +109,51 @@ function clearLocalstorage() {
     scoreboard.computer = 0
     score.firstElementChild.innerHTML = `Player: ${scoreboard.player}`;
     score.lastElementChild.innerHTML = `Computer: ${scoreboard.computer}`;
+    startModal.style.display = 'block';
 }
+
+function hideStartModal() {
+    if (input.value >= 5) {
+        inputValue = input.value;
+        startModal.style.display = 'none';
+    }
+}
+
+function check() {
+    if (scoreboard.player >= input.value) {
+        finalModal.style.display = 'block';
+        scoreboard.player = 0
+        scoreboard.computer = 0
+        score.firstElementChild.innerHTML = `Player: ${scoreboard.player}`;
+        score.lastElementChild.innerHTML = `Computer: ${scoreboard.computer}`;
+        localStorage.removeItem('player');
+        localStorage.removeItem('computer');
+        finalResult.firstElementChild.innerHTML = `You Win <span><i class="fa-solid fa-face-smile"></i></span>`;
+        finalResult.firstElementChild.style.color = 'green'
+        input.value = '10'
+    } else if (scoreboard.computer >= input.value) {
+        finalModal.style.display = 'block';
+        scoreboard.player = 0
+        scoreboard.computer = 0
+        score.firstElementChild.innerHTML = `Player: ${scoreboard.player}`;
+        score.lastElementChild.innerHTML = `Computer: ${scoreboard.computer}`;
+        localStorage.removeItem('player');
+        localStorage.removeItem('computer');
+        finalResult.firstElementChild.innerHTML = `You Lose <span><i class="fa-solid fa-face-smile"></i></span>`;
+        finalResult.firstElementChild.style.color = 'red'
+        input.value = '10'
+    }
+
+    if (finalModal.style.display == 'block') {
+        playAgine.addEventListener('click', () => {
+            finalModal.style.display = 'none';
+            setTimeout(() => {
+                startModal.style.display = 'block'
+            }, 100)
+        })
+    }
+    setTimeout(() => {
+        check()
+    }, 50);
+}
+check()

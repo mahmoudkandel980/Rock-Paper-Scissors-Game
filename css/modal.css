@@ -1,7 +1,10 @@
 :root {
+    --primary-color: #003699;
     --modal-duration: 1s;
 }
-.modal {
+.modal,
+.startmodal,
+.finalmodal {
     display: none;
     position: fixed;
     top: 0;
@@ -15,7 +18,9 @@
     overflow: auto;
 }
 
-.modal-content {
+.modal-content,
+.content,
+.final-content {
     background-color: #fff;
     margin: 15% auto;
     width: 40%;
@@ -26,7 +31,7 @@
     animation-duration: var(--modal-duration);
 }
 
-.modal-content h1 {
+.modal-content h1 .final-content.h1 {
     margin-bottom: 1rem;
 }
 .modal-content p {
@@ -34,7 +39,6 @@
     font-size: 1.5rem;
     font-weight: bold;
 }
-
 @media (max-width: 700px) {
     #modal-icon {
         font-size: 110px;
@@ -56,4 +60,36 @@
     to {
         opacity: 1;
     }
+}
+
+.content input {
+    display: block;
+    margin: 1rem auto;
+    width: 40%;
+    height: 2rem;
+    outline: none;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.btn-content,
+.play-btn {
+    background-color: var(--light-color);
+    color: #333;
+    padding: 0.4rem 1.3rem;
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-content:hover,
+.play-btn:hover {
+    background: var(--primary-color);
+    color: #fff;
 }

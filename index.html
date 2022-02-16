@@ -18,12 +18,7 @@
         <div class="container">
             <header class="header">
                 <h1>Rock Paper Scissors</h1>
-                <button
-                    id="restart"
-                    class="restart-btn btn btn-outline-primary"
-                >
-                    Restart Game
-                </button>
+                <button id="restart" class="restart-btn">Restart Game</button>
                 <div class="score" id="score">
                     <p>Player: 0</p>
                     <p>Computer: 0</p>
@@ -44,6 +39,25 @@
                 <p>Computer Chose Rock</p>
             </div>
         </div>
+
+        <div class="startmodal">
+            <div class="content">
+                <h1>Enter fortnite number</h1>
+                <h4>
+                    Pleas dont enter any negative value or value less than 5
+                </h4>
+                <input type="number" autofocus value="10" />
+                <button id="btn" class="btn-content">Submit</button>
+            </div>
+        </div>
+
+        <div class="finalmodal">
+            <div id="finalresult" class="final-content">
+                <h1 class="text-win">You Win</h1>
+                <button class="play-btn">Play Again</button>
+            </div>
+        </div>
+
         <script src="js/main.js"></script>
     </body>
 </html>
