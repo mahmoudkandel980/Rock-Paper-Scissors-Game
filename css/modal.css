@@ -31,35 +31,15 @@
     animation-duration: var(--modal-duration);
 }
 
-.modal-content h1 .final-content.h1 {
+.modal-content h1,
+.content,
+.final-content.h1 {
     margin-bottom: 1rem;
 }
 .modal-content p {
     margin-top: 1rem;
     font-size: 1.5rem;
     font-weight: bold;
-}
-@media (max-width: 700px) {
-    #modal-icon {
-        font-size: 110px;
-    }
-    .modal-content {
-        width: 90%;
-    }
-}
-@media (max-width: 500px) {
-    #modal-icon {
-        font-size: 80px;
-    }
-}
-
-@keyframes openModal {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
 }
 
 .content input {
@@ -92,4 +72,32 @@
 .play-btn:hover {
     background: var(--primary-color);
     color: #fff;
+}
+
+@media (max-width: 700px) {
+    #modal-icon {
+        font-size: 110px;
+    }
+    .modal-content,
+    .content,
+    .final-content {
+        width: 90%;
+    }
+    .content input {
+        width: 80%;
+    }
+}
+@media (max-width: 500px) {
+    #modal-icon {
+        font-size: 80px;
+    }
+}
+
+@keyframes openModal {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
