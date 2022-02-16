@@ -77,11 +77,14 @@ function hideModalPro() {
 function loading() {
     if (localStorage.getItem('player')) {
         scoreboard.player = JSON.parse(localStorage.getItem('player'));
+        restart.style.display = 'inline-block';
     } else {
         scoreboard.player = 0
     }
     if (localStorage.getItem('computer')) {
         scoreboard.computer = JSON.parse(localStorage.getItem('computer'));
+        restart.style.display = 'inline-block';
+
     } else {
         scoreboard.computer = 0
     }
