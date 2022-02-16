@@ -71,7 +71,7 @@ function hideModalPro() {
         if (modal.style.display == 'block') {
             modal.style.display = 'none';
         }
-    }, 1000);
+    }, 2000);
 }
 
 function loading() {
