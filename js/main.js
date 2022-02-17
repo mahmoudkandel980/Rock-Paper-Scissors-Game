@@ -3,6 +3,7 @@ const choices = document.querySelectorAll('.choice'),
     result = document.getElementById('result'),
     restart = document.getElementById('restart'),
     modal = document.querySelector('.modal'),
+    modalIcon = document.getElementById('modal-icon'),
     startModal = document.querySelector('.startmodal'),
     input = document.querySelector('.startmodal input'),
     startModalBtn = document.getElementById('btn'),
@@ -30,6 +31,7 @@ function play(e) {
     let computerChoice = array[Math.floor(Math.random() * array.length)];
     let winner = getWinner(playerChoise, computerChoice)
     result.firstElementChild.textContent = winner;
+    modalIcon.classList = `fas fa-hand-${computerChoice} fa-10x`;
     result.lastElementChild.textContent = `Computer Chose ${computerChoice}`;
 
     if (winner == 'You Win') {
