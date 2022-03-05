@@ -122,7 +122,7 @@ function hideStartModal() {
 }
 
 function check() {
-    if (scoreboard.player >= input.value && input.value != 0) {
+    if (scoreboard.player >= input.value && input.value != 0 && input.value > 0) {
         finalModal.style.display = 'block';
         scoreboard.player = 0
         scoreboard.computer = 0
