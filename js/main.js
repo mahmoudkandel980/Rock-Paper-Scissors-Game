@@ -122,7 +122,9 @@ function hideStartModal() {
 }
 
 function check() {
-    if (scoreboard.player >= input.value && input.value != 0 && input.value > 0) {
+    if( input.value < 0){
+        return;
+    }else if (scoreboard.player >= input.value && input.value != 0) {
         finalModal.style.display = 'block';
         scoreboard.player = 0
         scoreboard.computer = 0
@@ -133,7 +135,7 @@ function check() {
         finalResult.firstElementChild.innerHTML = `You Win <span><i class="fa-solid fa-face-smile"></i></span>`;
         finalResult.firstElementChild.style.color = 'green'
         input.value = '10'
-    } else if (scoreboard.computer >= input.value && input.value != 0 && input.value > 0) {
+    } else if (scoreboard.computer >= input.value && input.value != 0) {
         finalModal.style.display = 'block';
         scoreboard.player = 0
         scoreboard.computer = 0
